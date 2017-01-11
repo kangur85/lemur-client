@@ -6,7 +6,6 @@
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script src="http://cdn.jsdelivr.net/sockjs/1.0.1/sockjs.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/5.0.1/Rx.js"></script>
   
   <base href="/">
 
@@ -15,7 +14,8 @@
 </head>
 <body>
   <script>
-    
+      var cnt = 0;
+
       var stompClient = null;
 
       function connect() {
@@ -25,9 +25,10 @@
           stompClient = Stomp.over(socket);
           stompClient.connect({}, function (frame) {
               console.log('Connected: ' + frame);
-              stompClient.subscribe('/topic/files', function (greeting) {
+              stompClient.subscribe('/topic/files', function (message) {
+                  var json = JSON.parse(message.body);
 
-                  console.log("incoming message: " + greeting);
+                  $("#files ul").append(`<li><strong>${json.type}</strong>: ${json.filePath}</li>`);
               }), function(error) {
                   console.log("message error: " + error);
               };
@@ -39,7 +40,7 @@
           if (stompClient != null) {
               stompClient.disconnect();
           }
-          console.log("Disconnected");
+          console.log("Disconnected. Received " + cnt + " paths.");
       }
 
       connect();
@@ -47,6 +48,9 @@
     
   </script>
   <app-root>Loading...</app-root>
-  <div id="greetings"></div>
+  <div id="files">
+    <ul>
+    </ul>
+  </div>
 </body>
 </html>
