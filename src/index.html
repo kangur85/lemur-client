@@ -6,7 +6,7 @@
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script src="http://cdn.jsdelivr.net/sockjs/1.0.1/sockjs.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.js"></script>
-  
+
   <base href="/">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,12 +20,12 @@
 
       function connect() {
           var socket = new SockJS('http://localhost:8080/lemur');
-          
-          
+
+
           stompClient = Stomp.over(socket);
           stompClient.connect({}, function (frame) {
               console.log('Connected: ' + frame);
-              stompClient.subscribe('/topic/files', function (message) {
+              stompClient.subscribe('user/queue/updates', function (message) {
                   var json = JSON.parse(message.body);
 
                   $("#files ul").append(`<li><strong>${json.type}</strong>: ${json.filePath}</li>`);
@@ -45,7 +45,7 @@
 
       connect();
 
-    
+
   </script>
   <app-root>Loading...</app-root>
   <div id="files">
