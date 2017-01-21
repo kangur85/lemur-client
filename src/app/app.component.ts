@@ -7,8 +7,6 @@ import { FilesService, FileEntry } from './files.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  
-title = 'app works!';
 
 fileEntries: FileEntry[] = [];
 

@@ -20,7 +20,6 @@ export class FilesService {
       this.stomp = Stomp.over(this.sockJS);
       this.stomp.connect({}, 
         (frame) => {
-          console.log('Connected: ' + frame);
           this.stomp.subscribe('/user/queue/allFiles',
           (message) => {
              var json = JSON.parse(message.body);
@@ -28,7 +27,7 @@ export class FilesService {
           });
           this.stomp.send("/app/lemur", {}, "dummy");
         },
-        (error) => {console.log("error: " + error);});
+        (error) => {console.error("error: " + error);});
     }
 
   };
