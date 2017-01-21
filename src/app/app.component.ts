@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FilesService } from './files.service';
+import { FilesService, FileEntry } from './files.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +10,15 @@ export class AppComponent {
   
 title = 'app works!';
 
-constructor(filesService: FilesService) { }
-  
+fileEntries: FileEntry[] = [];
+
+constructor(filesService: FilesService) { 
+  filesService.subscribe(
+    (fileEntry: FileEntry) => {
+      this.fileEntries.push(fileEntry);
+    }
+  );
+}
+
 }
 
