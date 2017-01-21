@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "sockjs-client": "registry:dt/sockjs-client#1.0.3+20160727010356",
+    "stompjs": "registry:dt/stompjs#2.3.0+20161111105645"
+  },
+  "globalDependencies": {
+    "rx-core": "registry:dt/rx-core#4.0.0+20170103235349",
+    "rxjs-symbol-typings": "registry:lib/rxjs-symbol-typings#1.0.0+20160329204237"
+  }
+}

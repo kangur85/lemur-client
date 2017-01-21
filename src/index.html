@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <title>LemurClient</title>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script src="http://cdn.jsdelivr.net/sockjs/1.0.1/sockjs.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.js"></script>-->
 
   <base href="/">
 
@@ -14,36 +14,38 @@
 </head>
 <body>
   <script>
-      var cnt = 0;
+    //   var cnt = 0;
 
-      var stompClient = null;
+    //   var stompClient = null;
 
-      function connect() {
-          var socket = new SockJS('http://localhost:8080/lemur');
+    //   function connect() {
+    //       var socket = new SockJS('http://localhost:8080/lemur');
 
 
-          stompClient = Stomp.over(socket);
-          stompClient.connect({}, function (frame) {
-              console.log('Connected: ' + frame);
-              stompClient.subscribe('/user/queue/updates', function (message) {
-                  var json = JSON.parse(message.body);
+    //       stompClient = Stomp.over(socket);
+    //       stompClient.connect({}, function (frame) {
+    //           console.log('Connected: ' + frame);
+    //           stompClient.subscribe('/user/queue/allFiles', function (message) {
+    //               var json = JSON.parse(message.body);
 
-                  $("#files ul").append(`<li><strong>${json.type}</strong>: ${json.filePath}</li>`);
-              }), function(error) {
-                  console.log("message error: " + error);
-              };
-              stompClient.send("/app/lemur", {}, "dummy");
-          });
-      }
+    //               $("#files ul").append(`<li><strong>${json.type}</strong>: ${json.filePath}</li>`);
+    //           }), function(error) {
+    //               console.log("message error: " + error);
+    //           };
+    //           stompClient.send("/app/lemur", {}, "dummy");
+    //         },
+    //         (error) => {console.log('Stomp error: ' + error);}
+    //       );
+    //   }
 
-      function disconnect() {
-          if (stompClient != null) {
-              stompClient.disconnect();
-          }
-          console.log("Disconnected. Received " + cnt + " paths.");
-      }
+    //   function disconnect() {
+    //       if (stompClient != null) {
+    //           stompClient.disconnect();
+    //       }
+    //       console.log("Disconnected. Received " + cnt + " paths.");
+    //   }
 
-      connect();
+    //   connect();
 
 
   </script>

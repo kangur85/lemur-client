@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FilesService } from './files.service';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,7 @@ export class AppComponent {
   
 title = 'app works!';
 
-
+constructor(filesService: FilesService) { }
+  
 }
 
