@@ -10,22 +10,22 @@ export class FilesService {
   stomp: any;
   sockJS: any;
 
-  constructor() { 
+  constructor() {
   }
 
   public subscribe(onNext: (fileEntry: FileEntry) => void) {
 
     if (this.sockJS == null) {
-      this.sockJS = SockJS('http://localhost:8080/lemur');
+      this.sockJS = SockJS('http://localhost:8080/get/allFiles');
       this.stomp = Stomp.over(this.sockJS);
-      this.stomp.connect({}, 
+      this.stomp.connect({},
         (frame) => {
           this.stomp.subscribe('/user/queue/allFiles',
           (message) => {
              var json = JSON.parse(message.body);
              onNext(new FileEntry(json.filePath, json.type));
           });
-          this.stomp.send("/app/lemur", {}, "dummy");
+          this.stomp.send("/app/get/allFiles", {}, "");
         },
         (error) => {console.error("error: " + error);});
     }
@@ -37,7 +37,7 @@ export class FilesService {
 export class FileEntry {
     filePath: String;
     type: String;
-    
+
     constructor(filePath: String, type: String) {
         this.filePath = filePath;
         this.type = type;

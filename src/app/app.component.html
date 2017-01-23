@@ -22,7 +22,7 @@
     <!--<h1>Lemur client</h1>-->
     <ul>
       <li *ngFor="let fileEntry of fileEntries">
-        <span class="badge badge-default">Existing</span> {{fileEntry.filePath}}
+        <span class="badge badge-default">{{fileEntry.type}}</span> {{fileEntry.filePath}}
       </li>
     </ul>
   </div>
