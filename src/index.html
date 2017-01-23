@@ -1,58 +1,34 @@
 <!doctype html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>LemurClient</title>
-  <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-  <script src="http://cdn.jsdelivr.net/sockjs/1.0.1/sockjs.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.js"></script>-->
+<html lang="en">
+  <head>
+    <title>LemurClient</title>
+    <base href="/">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
 
-  <base href="/">
+    <title>Starter Template for Bootstrap</title>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
-<body>
-  <script>
-    //   var cnt = 0;
+    <!-- Bootstrap core CSS -->
+    <link href="./assets/css/bootstrap.min.css" rel="stylesheet">
 
-    //   var stompClient = null;
+    <!-- Custom styles for this template -->
+    <link href="./assets/css/starter-template.css" rel="stylesheet">
+  </head>
 
-    //   function connect() {
-    //       var socket = new SockJS('http://localhost:8080/lemur');
+  <body>
+    <app-root>Loading...</app-root>
 
-
-    //       stompClient = Stomp.over(socket);
-    //       stompClient.connect({}, function (frame) {
-    //           console.log('Connected: ' + frame);
-    //           stompClient.subscribe('/user/queue/allFiles', function (message) {
-    //               var json = JSON.parse(message.body);
-
-    //               $("#files ul").append(`<li><strong>${json.type}</strong>: ${json.filePath}</li>`);
-    //           }), function(error) {
-    //               console.log("message error: " + error);
-    //           };
-    //           stompClient.send("/app/lemur", {}, "dummy");
-    //         },
-    //         (error) => {console.log('Stomp error: ' + error);}
-    //       );
-    //   }
-
-    //   function disconnect() {
-    //       if (stompClient != null) {
-    //           stompClient.disconnect();
-    //       }
-    //       console.log("Disconnected. Received " + cnt + " paths.");
-    //   }
-
-    //   connect();
-
-
-  </script>
-  <app-root>Loading...</app-root>
-  <div id="files">
-    <ul>
-    </ul>
-  </div>
-</body>
+    <!-- Bootstrap core JavaScript
+      ================================================== -->
+      <!-- Placed at the end of the document so the pages load faster -->
+      <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+      <script>window.jQuery || document.write('<script src="./assets/js/jquery-3.1.1.slim.min.js"><\/script>')</script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+      <script src="./assets/js/bootstrap.min.js"></script>
+      <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+      <script src="./assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
 </html>

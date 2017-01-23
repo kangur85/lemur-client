@@ -10,7 +10,7 @@ export class AppComponent {
 
 fileEntries: FileEntry[] = [];
 
-constructor(filesService: FilesService) { 
+constructor(filesService: FilesService) {
   filesService.subscribe(
     (fileEntry: FileEntry) => {
       this.fileEntries.push(fileEntry);
