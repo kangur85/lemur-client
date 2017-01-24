@@ -9,6 +9,7 @@ export class FilesService {
 
   stomp: any;
   sockJS: any;
+  wasConnected: boolean;
 
   constructor() {
   }
@@ -20,6 +21,7 @@ export class FilesService {
       this.stomp = Stomp.over(this.sockJS);
       this.stomp.connect({},
         (frame) => {
+          this.wasConnected = true;
           this.stomp.subscribe('/user/queue/allFiles',
           (message) => {
              var json = JSON.parse(message.body);
@@ -27,7 +29,11 @@ export class FilesService {
           });
           this.stomp.send("/app/get/allFiles", {}, "");
         },
-        (error) => {console.error("error: " + error);});
+        (error) => {
+            if (this.stomp.connected || !(this.wasConnected)) {
+              console.error("error: " + error);
+            }
+        });
     }
 
   };
